@@ -15,7 +15,7 @@ In order to connect to the AWS IoT broker it is necessary to supply the followin
 
 * --cert _The file path to your client certificate, in PEM format_
 * --key _The file path to your private key, in PEM format_
-* --root-ca _The file path to root certificate authority, in PEM format.
+* --root-ca _The file path to root certificate authority, in PEM format_
 * --client-id _The device ID registered in the AWS IoT with all the necessary connect/publish permissions_
 * --topic _The topic to publish messages to_
 
