@@ -33,9 +33,9 @@ Another option is to compile it from sources:
 cd aws-iot-device-sdk-python
 python setup.py install`
 
-# MQTT client using Eclispe PAHO library
+# MQTT client using Eclipse PAHO library
 
-The second file implements a virtual sensor that connects to the AWS IoT broker using the [Paho MQTT Client](https://github.com/eclipse/paho.mqtt.python). 
+The second file implements a virtual sensor that connects to the AWS IoT broker using the [Eclipse Paho MQTT Client](https://github.com/eclipse/paho.mqtt.python). 
 Details on how to setup the TLS connection with the correct parameters so that the MQTT client can connect to
 AWS IoT are available in this [AWS blog](https://aws.amazon.com/blogs/iot/how-to-implement-mqtt-with-tls-client-authentication-on-port-443-from-client-devices-python/).
 
