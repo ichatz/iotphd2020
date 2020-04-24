@@ -1,6 +1,5 @@
 from AWSIoTPythonSDK.MQTTLib import AWSIoTMQTTClient
 from AWSIoTPythonSDK.exception.AWSIoTExceptions import publishTimeoutException
-from awscrt import io, mqtt
 import json
 import sensor
 import time
@@ -12,14 +11,7 @@ import time
 # Using globals to simplify sample code
 args = sensor.parse_args()
 
-io.init_logging(io.LogLevel.Debug, 'stderr')
-
 if __name__ == '__main__':
-    # Spin up resources
-    event_loop_group = io.EventLoopGroup(1)
-    host_resolver = io.DefaultHostResolver(event_loop_group)
-    client_bootstrap = io.ClientBootstrap(event_loop_group, host_resolver)
-
     # Setup mqtt connection
     mqtt_connection = AWSIoTMQTTClient(args.client_id)
     mqtt_connection.configureEndpoint(args.endpoint, 8883)
@@ -47,7 +39,7 @@ if __name__ == '__main__':
             mqtt_connection.publish(
                 topic=args.topic,
                 payload=message,
-                QoS=mqtt.QoS.AT_LEAST_ONCE)
+                QoS=1)
 
         except publishTimeoutException:
             print("Failed to publish message")
@@ -56,6 +48,5 @@ if __name__ == '__main__':
 
     # Disconnect
     print("Disconnecting...")
-    disconnect_future = mqtt_connection.disconnect()
-    disconnect_future.result()
+    mqtt_connection.disconnect()
     print("Disconnected!")
